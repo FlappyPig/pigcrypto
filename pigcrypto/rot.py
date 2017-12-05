@@ -15,7 +15,7 @@ def rotate_letter(letter,n):
     elif letter.islower:
         start = ord('a')
     else:
-        return letter
+        return letterpyt
 
     c = ord(letter)-start
     i = (c+n)%26+start
@@ -35,9 +35,25 @@ def rot(word,n):
         res += rotate_letter(letter,int(n))
     return res
 
+def rot_loop(word):
+    '''
+    loop 0-26 
+    words :string
+
+    '''
+           
+    for i in range(26):
+        res = ''
+        for letter in word:
+            res += rotate_letter(letter,int(i))
+        print('{0}: {1}'.format(i,res))
+        
+
 
 def test():
-    print (rot('flapp ypig',7))
+    print (rot('flapp ypig',13))
+    print (rot('synccalcvt',13))
+    print (rot_loop('synccalcvt'))
 
 
 if __name__ == '__main__':
