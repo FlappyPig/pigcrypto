@@ -74,7 +74,7 @@ $ git commit -m "提交注释"
 4. 将自己的分支合并到本地dev分支
 本步是在阶段性开发完成后，将自己的分支合并到本地dev分支，准备推送到远程。自己的分支开发完成后，首先我们需要切换回dev分支，随后将自己分支的修改合并到dev分支。
 ```bash
-$ git checkout dev
+$ git branch dev
 $ git merge --no-ff [MEMBER_NAME] -m "提交注释"  # [MEMBER_NAME] 是自己的分支名称
 ```
 --no-ff参数表示强制生成merge日志。
