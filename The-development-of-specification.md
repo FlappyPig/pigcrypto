@@ -97,7 +97,7 @@ $ git push
 ```
 6. 删除自己的分支（可选）
 ```bash
-git checkout -d [MEMBER_NAME]  # [MEMBER_NAME] 是自己的分支名称
+git branch -d [MEMBER_NAME]  # [MEMBER_NAME] 是自己的分支名称
 ```
 自己的本地分支的存在不会影响远程分支。
 7. 	常用查询命令
