@@ -52,6 +52,32 @@ def base64de(str):
     """
     return base64.b64decode(str)
 
+def base36en(number, alphabet='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+    
+    """Converts an integer to a base36 string."""
+    if not isinstance(number, (int, long)):
+        raise TypeError('number must be an integer')
+
+    base36 = ''
+    sign = ''
+
+    if number < 0:
+        sign = '-'
+        number = -number
+
+    if 0 <= number < len(alphabet):
+        return sign + alphabet[number]
+
+    while number != 0:
+        number, i = divmod(number, len(alphabet))
+        base36 = alphabet[i] + base36
+
+    return sign + base36
+
+
+def base36de(number):
+    return int(number, 36)
+
 
 def genprime(nbit):
     """
@@ -165,107 +191,4 @@ def urldecode(str):
     return urllib.unquote_plus(str)
 
 
-alphabet_to_morse = {
-    "A": ".-",
-    "B": "-...",
-    "C": "-.-.",
-    "D": "-..",
-    "E": ".",
-    "F": "..-.",
-    "G": "--.",
-    "H": "....",
-    "I": "..",
-    "J": ".---",
-    "K": "-.-",
-    "L": ".-..",
-    "M": "--",
-    "N": "-.",
-    "O": "---",
-    "P": ".--.",
-    "Q": "--.-",
-    "R": ".-.",
-    "S": "...",
-    "T": "-",
-    "U": "..-",
-    "V": "...-",
-    "W": ".--",
-    "X": "-..-",
-    "Y": "-.--",
-    "Z": "--..",
-    "0": "-----",
-    "1": ".----",
-    "2": "..---",
-    "3": "...--",
-    "4": "....-",
-    "5": ".....",
-    "6": "-....",
-    "7": "--...",
-    "8": "---..",
-    "9": "----.",
-    "Ä": ".-.-",
-    "Ü": "..--",
-    "ß": "...--..",
-    "À": ".--.-",
-    "È": ".-..-",
-    "É": "..-..",
-    ".": ".-.-.-",
-    ",": "--..--",
-    ":": "---...",
-    ";": "-.-.-.",
-    "?": "..--..",
-    "-": "-....-",
-    "_": "..--.-",
-    "(": "-.--.",
-    ")": "-.--.-",
-    "'": ".----.",
-    "=": "-...-",
-    "+": ".-.-.",
-    "/": "-..-.",
-    "@": ".--.-.",
-    "Ñ": "--.--",
-    " ": " ",
-    "": ""
-}
-morse_to_alphabet = {v: k for k, v in alphabet_to_morse.iteritems()}
 
-
-def _morseremoveunusablecharacters(uncorrected_string):
-    return filter(lambda char: char in alphabet_to_morse, uncorrected_string.upper())
-
-
-def morseencode(decoded):
-    """
-    :param decoded:
-    :return:
-    """
-    morsestring = []
-    decoded = _morseremoveunusablecharacters(decoded)
-    decoded = decoded.upper()
-    words = decoded.split(" ")
-    for word in words:
-        letters = list(word)
-        morseword = []
-        for letter in letters:
-            morseletter = alphabet_to_morse[letter]
-            morseword.append(morseletter)
-        word = "/".join(morseword)
-        morsestring.append(word)
-    return " ".join(morsestring)
-
-
-def morsedecode(encoded):
-    """
-    :param encoded:
-    :return:
-    """
-    characterstring = []
-    words = encoded.split(" ")
-    for word in words:
-        letters = word.split("/")
-        characterword = []
-        for letter in letters:
-            characterletter = morse_to_alphabet[letter]
-            characterword.append(characterletter)
-        word = "".join(characterword)
-        characterstring.append(word)
-    return " ".join(characterstring)
