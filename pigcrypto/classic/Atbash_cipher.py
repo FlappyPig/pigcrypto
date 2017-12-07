@@ -80,7 +80,7 @@ def Atbash_cipher_de(cipher):
 
 
 if __name__ == '__main__':
-    
+
     Atbash_cipher_en('the quick brown fox jumps over the lazy dog')
     Atbash_cipher_de('GSV JFRXP YILDM ULC QFNKH LEVI GSV OZAB WLT')
 
