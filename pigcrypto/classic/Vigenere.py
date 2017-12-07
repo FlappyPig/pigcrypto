@@ -2,6 +2,11 @@
 # -*- coding: utf-8 -*-
 
 def en_Vigenere(input,key):
+    """
+    :param input:
+    :param key:
+    :return:
+    """
     ptLen = len(input)
     keyLen = len(key)
     quotient = ptLen // keyLen    #商
@@ -17,6 +22,11 @@ def en_Vigenere(input,key):
     return out
 
 def de_Vigenere(output,key):
+    """
+    :param output:
+    :param key:
+    :return:
+    """
     ptLen = len(output)
     keyLen = len(key)
     quotient = ptLen // keyLen
@@ -30,3 +40,7 @@ def de_Vigenere(output,key):
         c = int((ord(output[quotient*keyLen + i]) - ord('a') + 26 - (ord(key[i]) - ord('a')) % 26 + ord('a')))
         inp += chr(c)
     return inp
+
+
+if __name__ == '__main__':
+    main()

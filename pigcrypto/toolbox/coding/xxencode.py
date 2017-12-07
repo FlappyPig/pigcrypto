@@ -32,7 +32,9 @@ def xxencode(message):
         
         roll_str = reverse(bin(ord(i))[2:]).ljust(8,'0')
         bin_num += reverse(roll_str)
-        #print (bin_num)
+
+        bin_num += reverse(roll_str)
+
     if (len(bin_num) % 6) == 0:
         pass
         #return bin_num
@@ -46,7 +48,7 @@ def xxencode(message):
         # print (bin_num[i:i+6])
         # print (int(bin_num[i:i+6],2))
         new_str += base[(int(bin_num[i:i+6],2))]
-    
+
     return new_str
     
         
@@ -56,4 +58,4 @@ def xxencode(message):
 
 if __name__ == '__main__':
 
-    xxencode('1phan')
+    xxencode('Cat')

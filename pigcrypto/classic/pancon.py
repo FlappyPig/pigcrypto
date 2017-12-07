@@ -33,7 +33,7 @@ ENCODE = {
 	}
 CODE = dict(map(lambda t:(t[1],t[0]),ENCODE.items()))
 
-def peig(m):
+def peig_de(m):
     m = m.upper()
     output = ''
     for i in range(0, len(m) - 4, 5):
@@ -42,4 +42,4 @@ def peig(m):
     return output
 
 if __name__ == '__main__':
-    peig('aaaaa')
+    peig_de('aaaaa')
