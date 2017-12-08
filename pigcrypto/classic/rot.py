@@ -52,12 +52,32 @@ def rot_loop(word):
             res += rotate_letter(letter,int(i))
         print('{0}: {1}'.format(i,res))
         
+def de_rot_ascii(cipher,n):
+
+    new_str = ''
+    for i in str(cipher):
+        i = ord(i)-int(n)
+        i = chr(i)
+        new_str += i
+    return new_str
+
+def en_rot_ascii(cipher,n):
+    
+    new_str = ''
+    for i in str(cipher):
+        i = ord(i)+int(n)
+        new_str += chr(i)
+
+    return new_str
 
 
 def test():
+    print ('test')
     print (rot('flappypig is cool',13))
     print (rot('syncclcvt vf pbby',13))
     print (rot_loop('syncclcvt vf pbby'))
+    print (de_rot_ascii('D5Y8h5H|]mP3PGD|RGokPmTqPZYK]JQoPmH|Q}IpPGEpQZH6iT@@',3))
+    print (en_rot_ascii('A2V5e2EyZjM0MDAyODlhMjQnMWVHZGNlMjEyNzFmMDBmNWE3fQ==',3))
 
 
 if __name__ == '__main__':

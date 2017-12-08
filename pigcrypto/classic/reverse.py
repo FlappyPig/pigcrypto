@@ -1,4 +1,3 @@
-#! usr/bin/python
 #coding=utf-8
 
 def reverse(message):
@@ -6,7 +5,8 @@ def reverse(message):
      reverse
      message  -> egassem
     '''
-    # message = raw_input("input the message")
+    # message = raw#! usr/bin/python
+
     translated = ''
 
     i = len(message) - 1
