@@ -37,9 +37,17 @@ def peig_de(m):
     m = m.upper()
     output = ''
     for i in range(0, len(m) - 4, 5):
-	    temp = m[i: i + 5]
-	    output += CODE[temp]
+		temp = m[i: i + 5]
+		output += ENCODE[temp]
     return output
 
+def peig_en(m):
+	m = m.upper()
+	output = ''
+	for i in m:
+		output += CODE[i]
+	return output
+
+
 if __name__ == '__main__':
-    peig_de('aaaaa')
+    print(peig_de('aaaaa'))
