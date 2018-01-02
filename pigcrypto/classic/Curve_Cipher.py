@@ -30,6 +30,32 @@ def set_key(message,x,y):
     return e
 
 
+def create_cipher_re(x,y,new_str):
+    """
+    reverse
+
+    :return:
+    """
+    for i in reversed(range(y)):
+        for j in reversed(range(x)):
+            new_str += e[i][j]
+            break
+    return(str(new_str))
+    print(new_str)
+
+def create_cipher_po(x,y,new_str):
+    """
+    positive
+
+    :return:
+    """
+    for i in range(y):
+        for j in reversed(range(x)):
+            new_str += e[i][j]
+            break
+    return (str(new_str))
+    print(new_str)
+
 
 
 
@@ -37,19 +63,27 @@ def set_key(message,x,y):
 def curve_cipher_en(message,x,y):
     set_key(message,x,y)
     new_str = ''
+    out_put_str = ''
 
-    #set_flag = 0
-    if x % 2 ==0:
-        set_flag = 0
-    else:
-        set_flag =1
+    for i in reversed(range(x+1)):
+        if x%2 == 0:
+            if i%2 == 0:
+
+                out_put_str += create_cipher_re(i,y,new_str)
+            else:
+                out_put_str +=create_cipher_po(i,y,new_str)
+        else:
+            if i%2 == 0:
+                #print(str(i)+" 正向：")
+                out_put_str +=create_cipher_po(i,y,new_str)
+            else:
+                #print(str(i)+" 逆向：")
+                out_put_str +=create_cipher_re(i,y,new_str)
+    print (out_put_str)
+    return out_put_str
 
 
-    for i in reversed(range(y)):
-        for j in reversed(range(x)):
-            new_str += e[i][j]
-            break 
-    print(new_str)
+
 
 
 
