@@ -51,3 +51,4 @@ def peig_en(m):
 
 if __name__ == '__main__':
     print(peig_de('aaaaa'))
+
