@@ -14,10 +14,8 @@ def rail_fence_encode(message,inter):
     for i in range(0,len(message),inter):
         
         elist.append(message[i:i+inter:])
-        print(elist)
-    # for count in range(0,len(message),int(len(message)/inter)+1):
-    #     elist.append(message[count:count+int(len(message)/inter)+1])
-    #     print(elist)
+        # print(elist)
+
     for i in range(inter):
         for j in range(int(len(message)/inter)+1):
             try:
@@ -35,11 +33,15 @@ def rail_fence_decode(cipher,inter):
     elist = []
     new_str = ''
 
+    if inter == 2:
 
-    for count in range(0,len(cipher),int(len(cipher)/inter)+1):
-        elist.append(cipher[count:count+int(len(cipher)/inter)+1])
+        for count in range(0,len(cipher),int(len(cipher)/inter)+1):
+            elist.append(cipher[count:count+int(len(cipher)/inter)+1])
+    else:
+        for count in range(0,len(cipher),int(len(cipher)/inter)):
+            elist.append(cipher[count:count+int(len(cipher)/inter)])
         
-    print(elist)
+    # print(elist)
 
     for i in range(int(len(cipher)/inter)+1):
         for j in range(inter):
@@ -76,5 +78,6 @@ def rail_fence_encode_auto(message):
 if __name__ == '__main__':
     #rail_fence_encode_auto('Teucbonojmsvrhlzdghqikrwfxupoeteayo')
     rail_fence_encode('THERE IS A CIPHER',7)
-    # rail_fence_encode('The quick brown fox jumps over the lazy dog',2)
-    # rail_fence_decode('Teucbonojmsvrhlzdghqikrwfxupoeteayo',2)
+    rail_fence_decode('TAHCEIRPEHIESR',7)
+    rail_fence_encode('The quick brown fox jumps over the lazy dog',2)
+    rail_fence_decode('Teucbonojmsvrhlzdghqikrwfxupoeteayo',2)
