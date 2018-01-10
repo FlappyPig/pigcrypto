@@ -27,7 +27,7 @@ def rail_fence_encode(message,inter):
         # print(j,i,new_str)
 
     print(new_str)
-    return 0
+    return new_str
 
 def rail_fence_decode(cipher,inter):
     elist = []
@@ -51,9 +51,14 @@ def rail_fence_decode(cipher,inter):
                 pass
 
     print(new_str)
+    return new_str
 
 
 def rail_fence_encode_auto(message):
+    """
+    retrun 
+    
+    """
     e = message
     elen = len(e)
     field=[]
@@ -61,7 +66,7 @@ def rail_fence_encode_auto(message):
                 if(elen%i==0):
                     field.append(i)
     for f in field:
-        b = elen / f
+        b = int(elen / f)
         result = {x:'' for x in range(b)}
         for i in range(elen):
             a = i % b;
@@ -76,8 +81,8 @@ def rail_fence_encode_auto(message):
 
 
 if __name__ == '__main__':
-    #rail_fence_encode_auto('Teucbonojmsvrhlzdghqikrwfxupoeteayo')
     rail_fence_encode('THERE IS A CIPHER',7)
     rail_fence_decode('TAHCEIRPEHIESR',7)
     rail_fence_encode('The quick brown fox jumps over the lazy dog',2)
     rail_fence_decode('Teucbonojmsvrhlzdghqikrwfxupoeteayo',2)
+    rail_fence_encode_auto('TAHCEIRPEHIESR')
